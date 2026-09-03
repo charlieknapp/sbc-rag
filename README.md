@@ -7,6 +7,7 @@ In progress — built over ~4 weeks. See phase notes below for what's done vs. i
 
 ## Project Structure
 
+ ```
 sbc-rag/
 ├── data/
 │ ├── raw/ # original SBC PDFs, untouched
@@ -22,13 +23,15 @@ sbc-rag/
 ├── tests/
 └── eval/
 └── questions.jsonl # eval question set + correct answers
+```
 
 ## Setup
 
+```
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
+```
 
 *(TODO: add any API keys / .env instructions once we get to the generation step)*
 
