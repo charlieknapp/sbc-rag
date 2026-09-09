@@ -3,7 +3,8 @@ RAG-based Q&amp;A tool for health benefit plans — parses real SBC (Summary of 
 
 ## Status
 
-In progress — built over ~4 weeks. See phase notes below for what's done vs. in progress as of the review date.
+In progress — built over ~4 weeks. Phases 0-2 (environment, data acquisition, parsing) are complete. Phase 3 (chunking) is next. See phase notes below for what's done vs. in progress as of the review date.
+
 
 ## Project Structure
 
@@ -53,7 +54,17 @@ Note: coverage years span 2019-2026 intentionally. The SBC has been a federally 
 ## How It Works
 
 ### 1. Parsing
-*(TODO: pdfplumber vs. camelot — what we chose and why)*
+Every SBC is federally templated, but that consistency turned out to hold at the section level, not the extraction level — no two documents rendered their tables the same way underneath, and several looked visually identical while breaking differently on inspection.
+
+**Grid table and Important Questions table.** Both use `pdfplumber`'s table extraction (tuned tolerances — `snap_tolerance`/`join_tolerance`/`intersection_tolerance`/`edge_min_length` all set to `5`, found through a controlled default-vs-tuned comparison after a wrong first guess of `8` caused real cross-row text bleed) as the default path, with `camelot` (lattice mode, reading actual ruling lines instead of clustering text positions) substituted in for four documents whose specific defects pdfplumber couldn't handle: UnitedHealthcare (a duplicate invisible text layer — a legitimate PDF accessibility feature that confused every text-based extractor equally, fixed by stripping render-mode-3 text directly from the content stream), Cigna (decorative shading rectangles that pdfplumber's line-detection mistook for real row boundaries), Blue Shield CA and Anthem (a stray footnote and a mid-page table split, respectively, that camelot's ruling-line-based extraction simply didn't trip over). Which library and which table spec each document needs is captured once in `src/parsing/document_registry.py`, not re-decided per script.
+
+Raw table output — from either library — still isn't usable directly: merged cells, blank continuation rows, and wrapped multi-line labels all needed a shared normalization pass (`src/parsing/normalize.py`) that forward-fills blank category labels, merges orphaned overflow text onto the correct row, and tracks state across page breaks. The same normalization logic, generalized around a `TableSpec` dataclass, handles both the "Common Medical Events" grid table and the "Important Questions" table (different column shapes and merge semantics, same underlying blank-continuation pattern).
+
+**Non-table content.** Header metadata (insurer, plan name, coverage period, plan type) and the Excluded Services / Other Covered Services bulleted lists are extracted separately, since neither is a ruled table. Header metadata is pulled line-by-line with marker-based field detection, falling back to the document registry (not PDF text) for insurer name on the several documents where it's rendered as a logo image rather than text. Excluded/Other Covered Services required a different technique entirely — both lists are laid out as multi-column bullet grids with no ruling lines and, on at least one document, no enclosing rectangle at all — so they're reconstructed directly from word-level `(x0, top)` positions: bullet characters anchor column positions, rows are split into segments by horizontal gap, and each segment is assigned to its nearest column by its own leading position.
+
+**Deferred, on purpose:** the three standardized coverage examples (having a baby / managing diabetes / simple fracture) are structurally more involved than the other content and aren't needed until evaluation — every document prints the same three scenarios with fixed totals, so they'll serve as a built-in ground-truth check in Phase 7 rather than being built now. Language-access boilerplate and legal disclaimers are excluded outright — no answerable content.
+
+**Validation.** All 8 documents were checked by hand against their actual rendered PDFs (not just row/item counts), and a full 8-document regression pass was run against the final codebase after every document was individually validated — this caught one real bug (a fix made for one document silently dropping a valid row on another) before it could ship. A few small, low-severity artifacts remain and are documented in code rather than fixed: isolated single-character word splits on 2-3 documents, and one cosmetic field-boundary issue on Anthem's header (a value that lands split across two fields instead of one, nothing lost).
 
 ### 2. Chunking
 *(TODO: fixed-size vs. semantic — what we chose and why, how we handled tables)*
