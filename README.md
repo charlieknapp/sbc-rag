@@ -3,7 +3,7 @@ RAG-based Q&amp;A tool for health benefit plans — parses real SBC (Summary of 
 
 ## Status
 
-In progress — built over ~4 weeks. Phases 0-2 (environment, data acquisition, parsing) are complete. Phase 3 (chunking) is next. See phase notes below for what's done vs. in progress as of the review date.
+In progress — built over ~4 weeks. Phases 0-3 (environment, data acquisition, parsing, chunking) are complete. Phase 4 (retrieval) is next. See phase notes below for what's done vs. in progress as of the review date.
 
 
 ## Project Structure
@@ -66,8 +66,19 @@ Raw table output — from either library — still isn't usable directly: merged
 
 **Validation.** All 8 documents were checked by hand against their actual rendered PDFs (not just row/item counts), and a full 8-document regression pass was run against the final codebase after every document was individually validated — this caught one real bug (a fix made for one document silently dropping a valid row on another) before it could ship. A few small, low-severity artifacts remain and are documented in code rather than fixed: isolated single-character word splits on 2-3 documents, and one cosmetic field-boundary issue on Anthem's header (a value that lands split across two fields instead of one, nothing lost).
 
+**Output.** Validated extraction results are persisted to `data/processed/` as one JSON file per document (`notebooks/build_processed_data.py`), rather than re-running PDF extraction on every downstream iteration — chunking and every phase after it reads from this stable artifact, which also keeps a parsing bug and a downstream bug from being confused with each other.
+
 ### 2. Chunking
-*(TODO: fixed-size vs. semantic — what we chose and why, how we handled tables)*
+
+Because the source PDFs are already reduced to clean, structured JSON in `data/processed/` before chunking runs (see Parsing above), the fixed-size vs. semantic comparison this project calls for could be tested directly against real data rather than argued from first principles.
+
+**Fixed-size chunking was tested and measurably fails the "never split a row mid-chunk" requirement.** A naive character-window chunker (with overlap) was run against the flattened text of two documents at three window sizes (300/500/800 characters), tracking each row's exact character span so violations could be counted rather than eyeballed. Result: 28-62% of rows were split mid-chunk depending on window size, and the violation rate never approached zero even at the largest size tested — row lengths vary enormously (a ~110-character row sits next to a ~1,500-character prescription drug row), and a fixed-size window has no way to know where a row's boundary actually is. No window size is simultaneously small enough to keep chunks focused and large enough to never cut a row on this data.
+
+**Semantic (embedding-based) chunking was tested and found to be a real but imperfect signal.** Using local embeddings (`sentence-transformers`, `all-MiniLM-L6-v2` — the same model reused for the retrieval phase) consecutive-row cosine similarity was computed across all 8 documents and compared against the grid table's own real category boundaries — already known with certainty, since they're extracted directly during parsing — using precision/recall/F1 across a threshold sweep. The best single threshold (0.65) recovered the true category structure with F1 = 0.840 (precision 0.863, recall 0.833): a real, well-above-random signal, but not perfect, and no threshold cleanly separates every case (two rows in the *same* category scored a lower similarity, 0.627, than two rows in genuinely *different* categories at 0.786).
+
+**Decision: structured, row-level chunking — not fixed-size or similarity-threshold chunking.** Since the real category/row boundaries are already known with zero error from parsing, using a noisy ~84%-accurate embedding proxy to rediscover them would be strictly worse than simply using the boundary already extracted. Chunks are built directly from `data/processed/*.json`'s row structure (`src/chunking/chunker.py`): one chunk per grid table row and one per Important Questions row, with category, service/question text, and plan identity folded explicitly into each chunk's text (a retriever hands back isolated chunks with no surrounding context, so each one has to be self-describing); one chunk per whole Excluded Services / Other Covered Services list (list items showed no meaningful internal similarity signal worth grouping by); and one small chunk per document for header-level facts (deductible, plan type, coverage period). This satisfies "never split a row mid-chunk" exactly, by construction — a chunk *is* a row — rather than by tuning a threshold and hoping.
+
+320 chunks were produced across all 8 documents (`data/processed/chunks.json`), with per-document counts cross-checked against the already-validated parsing row/item counts for every document.
 
 ### 3. Retrieval
 *(TODO: BM25 vs. semantic search — how each performed, on which question types, and why)*
