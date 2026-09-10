@@ -1,0 +1,295 @@
+{
+  "source_filename": "cigna_nc_connect_bronze_hmo_2024.pdf",
+  "insurer": "Cigna",
+  "notes": "Deductible equals OOP max ($9,450 = $9,450); grid table needs CIGNA_GRID_TABLE_SPEC (split_camelot_merged_rows) because the source PDF draws one shared bounding box around multiple distinct services in places.",
+  "header_metadata": {
+    "insurer": "Cigna",
+    "plan_name": "Cigna HealthCare of North Carolina, Inc.: Connect Bronze 9450 Indiv Med Deductible",
+    "coverage_period": "01/01/2024 \u2013 12/31/2024",
+    "coverage_for": "Individual & Family",
+    "plan_type": "HMO"
+  },
+  "grid_table": {
+    "columns": [
+      "Common Medical Event",
+      "Services You May Need",
+      "What You Will Pay",
+      null,
+      "Limitations, Exceptions, & Other \nImportant Information"
+    ],
+    "rows": [
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Primary care visit to treat an injury or illness",
+        "0% coinsurance.",
+        "Not covered.",
+        "Refer to the policy for more information about Virtual Care Services."
+      ],
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Specialist visit",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Preventive care/screening/ immunization",
+        "No charge.",
+        "Not covered.",
+        "You may have to pay for services that aren\u2019t preventive. Ask your provider if the services needed are preventive. Then check what your plan will pay."
+      ],
+      [
+        "If you have a test",
+        "Diagnostic test (x-ray, blood work)",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you have a test",
+        "Imaging (CT/PET scans, MRIs)",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at www.cigna.com/ifp-drug- list",
+        "Generic drugs",
+        "Preferred Generic: 0% coinsurance (retail/home delivery) Generic: 0% coinsurance (retail/home delivery)",
+        "Not covered.",
+        "Generic, Preferred, and Non-Preferred Drugs: Limited to up to a 30-day supply (retail) or a 90-day supply (Designated 90- day retail pharmacy/home delivery). You pay a copayment for each 30-day supply (retail), if applicable. Specialty Drugs: Limited to up to a 30-day supply (retail) or a 90-day supply (Designated 90-day retail pharmacy/home delivery). Cigna Healthcare\u2019s specialty pharmacy can assist you in obtaining your specialty drugs. Call Accredo, at 877.826.7657 to talk to a representative."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at www.cigna.com/ifp-drug- list",
+        "Preferred brand drugs",
+        "0% coinsurance (retail/home delivery)",
+        "Not covered.",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at www.cigna.com/ifp-drug- list",
+        "Non-preferred drugs",
+        "0% coinsurance (retail/home delivery)",
+        "Not covered.",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at www.cigna.com/ifp-drug- list",
+        "Specialty drugs and other high cost drugs",
+        "0% coinsurance (retail/home delivery)",
+        "Not covered.",
+        ""
+      ],
+      [
+        "If you have outpatient surgery",
+        "Facility fee (e.g., ambulatory surgery center)",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you have outpatient surgery",
+        "Physician/surgeon fees",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency room care",
+        "0% coinsurance",
+        "0% coinsurance",
+        "You pay the same level as In-network if it is an emergency as defined in your plan, otherwise Not covered."
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency medical transportation",
+        "0% coinsurance",
+        "0% coinsurance",
+        ""
+      ],
+      [
+        "If you need immediate medical attention",
+        "Urgent care",
+        "0% coinsurance",
+        "0% coinsurance",
+        ""
+      ],
+      [
+        "If you have a hospital stay",
+        "Facility fee (e.g., hospital room)",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you have a hospital stay",
+        "Physician/surgeon fees",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you need mental health, behavioral health, or substance abuse services",
+        "Outpatient services",
+        "0% coinsurance",
+        "Not covered.",
+        "Includes medical services for MH/SA diagnoses."
+      ],
+      [
+        "If you need mental health, behavioral health, or substance abuse services",
+        "Inpatient services",
+        "0% coinsurance",
+        "Not covered.",
+        "Includes medical services for MH/SA diagnoses."
+      ],
+      [
+        "If you are pregnant",
+        "Office visits",
+        "0% coinsurance",
+        "Not covered.",
+        "Cost sharing does not apply for preventive services. Depending on the type of services, coinsurance may apply. Maternity care may include tests and services described elsewhere in the SBC (i.e. ultrasound)."
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery professional services",
+        "0% coinsurance",
+        "Not covered.",
+        ""
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery facility services",
+        "0% coinsurance",
+        "Not covered.",
+        ""
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Home health care",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Rehabilitation services",
+        "0% coinsurance",
+        "Not covered.",
+        "Coverage of physical, occupational and chiropractic therapy is limited to 30 combined visits annual max. Speech therapy is limited to 30 visits annual max."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Habilitation services",
+        "0% coinsurance",
+        "Not covered.",
+        "Coverage of physical and occupational therapy is limited to 30 combined visits annual max. Speech therapy is limited to 30 visits annual max."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Skilled nursing care",
+        "0% coinsurance",
+        "Not covered.",
+        "Coverage is limited to 60 days annual max."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Durable medical equipment",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Hospice services",
+        "0% coinsurance",
+        "Not covered.",
+        "None."
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s eye exam",
+        "No charge.",
+        "Not covered.",
+        "Children up to age 19. Coverage limited to one exam/year."
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s glasses",
+        "No charge.",
+        "Not covered.",
+        "Children up to age 19. Coverage limited to one pair of glasses/year."
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s dental check-up",
+        "Not covered.",
+        "Not covered.",
+        "Coverage is available through a stand-alone dental policy."
+      ]
+    ]
+  },
+  "important_questions": {
+    "columns": [
+      "Important Questions",
+      "Answers",
+      "Why This Matters:"
+    ],
+    "rows": [
+      [
+        "What is the overall deductible?",
+        "$9,450 person/ $18,900 family",
+        "Generally, you must pay all of the costs from providers up to the deductible amount before this plan begins to pay. If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible."
+      ],
+      [
+        "Are there services covered before you meet your deductible?",
+        "Yes. Preventive care and eye exam/glasses for children are covered before you meet your deductible.",
+        "This plan covers some items and services even if you haven\u2019t yet met the deductible amount. But a copayment or coinsurance may apply. For example, this plan covers certain preventive services without cost-sharing and before you meet your deductible. See a list of covered preventive services at https://www.healthcare.gov/coverage/preventive-care-benefits/."
+      ],
+      [
+        "Are there other deductibles for specific services?",
+        "No.",
+        "You don\u2019t have to meet deductibles for specific services."
+      ],
+      [
+        "What is the out-of- pocket limit for this plan?",
+        "$9,450 person/ $18,900 family",
+        "The out-of-pocket limit is the most you could pay in a year for covered services. If you have other family members in this plan, they have to meet their own out-of-pocket limits until the overall family out-of-pocket limit has been met."
+      ],
+      [
+        "What is not included in the out-of-pocket limit?",
+        "Premiums, balance-billing charges, penalties for failure to obtain preauthorization for services and health care this plan doesn\u2019t cover.",
+        "Even though you pay these expenses, they don\u2019t count toward the out\u2013of\u2013pocket limit."
+      ],
+      [
+        "Will you pay less if you use a network provider?",
+        "Yes. See www.cigna.com/ifp- providers or call 1-866-494- 2111 for a list of network providers.",
+        "This plan uses a provider network. You will pay less if you use a provider in the plan\u2019s network. You will pay the most if you use an out-of-network provider, and you might receive a bill from a provider for the difference between the provider\u2019s charge and what your plan pays (balance billing). Be aware, your network provider might use an out-of-network provider for some services (such as lab work). Check with your provider before you get services."
+      ],
+      [
+        "Do you need a referral to see a specialist?",
+        "No.",
+        "You can see the specialist you choose without a referral."
+      ]
+    ]
+  },
+  "excluded_services": [
+    "Acupuncture",
+    "Cosmetic surgery",
+    "Dental care (Adult)",
+    "Elective abortion",
+    "Long-term care",
+    "Non-emergency care when traveling outside the U.S.",
+    "Routine eye care (Adult)",
+    "Routine foot care",
+    "Weight loss programs"
+  ],
+  "other_covered_services": [
+    "Bariatric surgery",
+    "Chiropractic care",
+    "Hearing aids",
+    "Infertility treatment (excludes in vitro, AI etc.)",
+    "Private-duty nursing"
+  ]
+}

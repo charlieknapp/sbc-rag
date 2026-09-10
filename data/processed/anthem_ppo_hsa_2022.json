@@ -1,0 +1,297 @@
+{
+  "source_filename": "anthem_ppo_hsa_2022.pdf",
+  "insurer": "Anthem",
+  "notes": "Deductible splits into three numbers in one answer cell ($1,500/person, $2,800/member, $3,000/family) rather than the usual individual/family pair.",
+  "header_metadata": {
+    "insurer": "Anthem",
+    "plan_name": "Anthem\u00ae BlueCross Beigene USA, Inc.: Custom Anthem PPO HSA-H 1500 2800 3000 0 20 HSA",
+    "coverage_period": "01/01/2022 - 12/31/2022",
+    "coverage_for": "Individual + Family",
+    "plan_type": "PPO +"
+  },
+  "grid_table": {
+    "columns": [
+      "Common  \nMedical Event",
+      "Services You May Need",
+      "What You Will Pay",
+      null,
+      "Limitations, Exceptions, & \nOther Important Information"
+    ],
+    "rows": [
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Primary care visit to treat an injury or illness",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Specialist visit",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Preventive care/screening/ immunization",
+        "No charge",
+        "20% coinsurance",
+        "You may have to pay for services that aren't preventive. Ask your provider if the services needed are preventive. Then check what your plan will pay for."
+      ],
+      [
+        "If you have a test",
+        "Diagnostic test (x-ray, blood work)",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If you have a test",
+        "Imaging (CT/PET scans, MRIs)",
+        "0% coinsurance",
+        "20% coinsurance",
+        "$800 maximum/service for Non- Network Providers."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://www.anthe m.com/pharmacyi nformation/",
+        "Tier 1 - Typically Generic",
+        "$10/prescription (retail) and $20/prescription (home delivery)",
+        "30% coinsurance up to $250/prescription (retail) and Not covered (home delivery)",
+        "Most home delivery is 90-day supply. For more information, refer to \u201cNational Drug List\u201d at http://www.anthem.com/pharm acyinformation/ *See Prescription Drug section of the plan or policy document (e.g. evidence of coverage or certificate)."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://www.anthe m.com/pharmacyi nformation/",
+        "Tier 2 - Typically Preferred Brand & Non-Preferred Generic Drugs",
+        "$20/prescription (retail) and $40/prescription (home delivery)",
+        "30% coinsurance up to $250/prescription (retail) and Not covered (home delivery)",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://www.anthe m.com/pharmacyi nformation/",
+        "Tier 3 - Typically Non-Preferred Brand and Generic drugs",
+        "$30/prescription (retail) and $60/prescription (home delivery)",
+        "30% coinsurance up to $250/prescription (retail) and Not covered (home delivery)",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://www.anthe m.com/pharmacyi nformation/",
+        "Tier 4 - Typically Preferred Specialty (brand and generic)",
+        "$30/prescription (retail and home delivery)",
+        "30% coinsurance up to $250/prescription (retail) and Not covered (home delivery)",
+        ""
+      ],
+      [
+        "If you have outpatient surgery",
+        "Facility fee (e.g., ambulatory surgery center)",
+        "0% coinsurance",
+        "20% coinsurance",
+        "$350 maximum/service for Non- Network Providers."
+      ],
+      [
+        "If you have outpatient surgery",
+        "Physician/surgeon fees",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency room care",
+        "$150/admission",
+        "Covered as In-Network",
+        "Copay waived if admitted inpatient. 0% coinsurance for Emergency Room Physician Fee."
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency medical transportation",
+        "0% coinsurance",
+        "Covered as In-Network",
+        "--------none--------"
+      ],
+      [
+        "If you need immediate medical attention",
+        "Urgent care",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If you have a hospital stay",
+        "Facility fee (e.g., hospital room)",
+        "0% coinsurance",
+        "20% coinsurance",
+        "$1,000 maximum/day for Non- Emergency Admissions to Non- Network Providers."
+      ],
+      [
+        "If you have a hospital stay",
+        "Physician/surgeon fees",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If you need mental health, behavioral health, or substance abuse services",
+        "Outpatient services",
+        "Office Visit 0% coinsurance Other Outpatient 0% coinsurance",
+        "Office Visit 20% coinsurance Other Outpatient 20% coinsurance",
+        "Office Visit --------none-------- Other Outpatient --------none--------"
+      ],
+      [
+        "If you need mental health, behavioral health, or substance abuse services",
+        "Inpatient services",
+        "0% coinsurance",
+        "20% coinsurance",
+        "$1,000 maximum/day for Non- Emergency Admissions to Non- Network Providers. 0% coinsurance for Inpatient Physician Fee In-Network Providers. 20% coinsurance for Inpatient Physician Fee Non- Network Providers."
+      ],
+      [
+        "If you are pregnant",
+        "Office visits",
+        "0% coinsurance",
+        "20% coinsurance",
+        "$1,000 maximum/day for Non- Emergency Admissions to Non- Network Providers. Maternity care may include tests and services described elsewhere in the SBC (i.e. ultrasound). *Coverage includes fertility preservation services, see Fertility Preservation section."
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery professional services",
+        "0% coinsurance",
+        "20% coinsurance",
+        ""
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery facility services",
+        "0% coinsurance",
+        "20% coinsurance",
+        ""
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Home health care",
+        "0% coinsurance",
+        "20% coinsurance",
+        "100 visits/benefit period."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Rehabilitation services",
+        "0% coinsurance",
+        "20% coinsurance",
+        "Costs may vary by site of service. *See Therapy Services section."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Habilitation services",
+        "0% coinsurance",
+        "20% coinsurance",
+        ""
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Skilled nursing care",
+        "0% coinsurance",
+        "20% coinsurance",
+        "100 days/benefit period for skilled nursing services."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Durable medical equipment",
+        "20% coinsurance",
+        "20% coinsurance",
+        "*See Durable Medical Equipment Section"
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Hospice services",
+        "0% coinsurance",
+        "20% coinsurance",
+        "--------none--------"
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s eye exam",
+        "No charge",
+        "$0 copayment up to plan's Maximum Allowed Amount",
+        "*See Vision Services section"
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s glasses",
+        "Not covered",
+        "Not covered",
+        ""
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s dental check-up",
+        "Not covered",
+        "Not covered",
+        "--------none--------"
+      ]
+    ]
+  },
+  "important_questions": {
+    "columns": [
+      "Important Questions",
+      "Answers",
+      "Why This Matters:"
+    ],
+    "rows": [
+      [
+        "What is the overall deductible?",
+        "$1,500/person or $2,800/member or $3,000/family for In-Network Providers. $3,000/person or $3,000/member or $6,000/family for Non- Network Providers.",
+        "Generally, you must pay all of the costs from providers up to the deductible amount before this plan begins to pay. If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible."
+      ],
+      [
+        "Are there services covered before you meet your deductible?",
+        "Yes. Preventive Care for In- Network Providers. Vision for In-Network and Non-Network Providers.",
+        "This plan covers some items and services even if you haven\u2019t yet met the deductible amount. But a copayment or coinsurance may apply. For example, this plan covers certain preventive services without cost-sharing and before you meet your deductible. See a list of covered preventive services at https://www.healthcare.gov/coverage/preventive-care-benefits/."
+      ],
+      [
+        "Are there other deductibles for specific services?",
+        "No.",
+        "You don't have to meet deductibles for specific services."
+      ],
+      [
+        "What is the out-of- pocket limit for this plan?",
+        "$6,450/person or $6,450/member or $12,900/family for In-Network Providers. $7,500/person or $7,500/member or $15,000/family for Non- Network Providers.",
+        "The out-of-pocket limit is the most you could pay in a year for covered services. If you have other family members in this plan, they have to meet their own out-of-pocket limits until the overall family out-of-pocket limit has been met."
+      ],
+      [
+        "What is not included in the out-of-pocket limit?",
+        "Premiums, balance-billing charges, and health care this plan doesn't cover.",
+        "Even though you pay these expenses, they don\u2019t count toward the out-of-pocket limit."
+      ],
+      [
+        "Will you pay less if you use a network provider?",
+        "Yes, Prudent Buyer PPO. See www.anthem.com/ca or call (855) 333-5730 for a list of network providers.",
+        "This plan uses a provider network. You will pay less if you use a provider in the plan\u2019s network. You will pay the most if you use an Out-of-Network Provider, and you might receive a bill from a provider for the difference between the provider\u2019s charge and what your plan pays (balance billing). Be aware, your network provider might use an Out-of-Network Provider for some services (such as lab work). Check with your provider before you get services."
+      ],
+      [
+        "Do you need a referral to see a specialist?",
+        "No.",
+        "You can see the specialist you choose without a referral."
+      ]
+    ]
+  },
+  "excluded_services": [
+    "Cosmetic surgery",
+    "Dental Check-up",
+    "Long-term care",
+    "Weight loss programs",
+    "Dental care (Adult)",
+    "Glasses for a child",
+    "Private-duty nursing",
+    "Dental care (Pediatric)",
+    "Infertility treatment",
+    "Routine foot care unless you have been diagnosed with diabetes"
+  ],
+  "other_covered_services": [
+    "Acupuncture 20 visits/benefit period",
+    "Hearing aids",
+    "Bariatric surgery",
+    "Most coverage provided outside the United States. See www.bcbsglobalcore.com",
+    "Chiropractic care 30 visits/benefit period",
+    "Routine eye care (Adult) 1 exam/benefit period."
+  ]
+}

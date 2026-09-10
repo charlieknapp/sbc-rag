@@ -1,0 +1,294 @@
+{
+  "source_filename": "uhc_stancounty_hdhp_2025.pdf",
+  "insurer": "UnitedHealthcare",
+  "notes": "Source PDF carries a hidden, invisible-render-mode duplicate text layer; extract_camelot_tables strips it automatically via strip_invisible_text_from_pdf.",
+  "header_metadata": {
+    "insurer": "UnitedHealthcare",
+    "plan_name": "Stanislaus County \u2013 UnitedHealthcare High Deductible Health Plan",
+    "coverage_period": "01/01/2025 \u2013 12/31/2025",
+    "coverage_for": "Individual + Family",
+    "plan_type": "HDHP"
+  },
+  "grid_table": {
+    "columns": [
+      "Common  \nMedical Event",
+      "Services You May Need",
+      "What You Will Pay",
+      null,
+      "Limitations, Exceptions, & Other Important \nInformation"
+    ],
+    "rows": [
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Primary care visit to treat an injury or illness",
+        "$20 Copay per visit",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Specialist visit",
+        "$20 Copay per visit",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you visit a health care provider\u2019s office or clinic",
+        "Preventive care/screening/ immunization",
+        "No charge; Deductible Waived",
+        "30% Coinsurance",
+        "You may have to pay for services that aren't preventive. Ask your provider if the services needed are preventive. Then check what your plan will pay for."
+      ],
+      [
+        "If you have a test",
+        "Diagnostic test (x-ray, blood work)",
+        "$10 Copay per visit",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you have a test",
+        "Imaging (CT/PET scans, MRIs)",
+        "$25 Copay per visit",
+        "30% Coinsurance",
+        "Preauthorization is required. If you don\u2019t get preauthorization, benefits could be reduced by 100% of the total cost of the service."
+      ],
+      [
+        "If you need drugs to treat your illness or condition. More information about prescription drug coverage is available at www.cvshealth. com.",
+        "Generic drugs (Tier 1)",
+        "$10 Copay per prescription (retail for 30-day supply); $20 Copay per prescription (retail for 31-60 day supply); $30 Copay per prescription (retail for 61-100 day supply); $10 Copay per prescription (mail order for 30-day supply); $20 Copay per prescription (mail order for 31-100 day supply)",
+        "Not covered",
+        "None"
+      ],
+      [
+        "If you need drugs to treat your illness or condition. More information about prescription drug coverage is available at www.cvshealth. com.",
+        "Preferred brand drugs (Tier 2)",
+        "$25 Copay per prescription (retail for 30-day supply); $50 Copay per prescription (retail for 31-60 day supply); $75 Copay per prescription (retail for 61-100 day supply); $25 Copay per prescription (mail order for 30-day supply); $50 Copay per prescription (mail order for 31-100 day supply)",
+        "",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition. More information about prescription drug coverage is available at www.cvshealth. com.",
+        "Non-preferred brand drugs (Tier 3)",
+        "$25 Copay per prescription (retail for 30-day supply); $50 Copay per prescription (retail for 31-60 day supply); $75 Copay per prescription (retail for 61-100 day supply); $25 Copay per prescription (mail order for 30-day supply); $50 Copay per prescription (mail order for 31-100 day supply)",
+        "",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition. More information about prescription drug coverage is available at www.cvshealth. com.",
+        "Specialty drugs (Tier 4)",
+        "See above limits",
+        "",
+        ""
+      ],
+      [
+        "If you have outpatient surgery",
+        "Facility fee (e.g., ambulatory surgery center)",
+        "$100 Copay per occurrence",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you have outpatient surgery",
+        "Physician/surgeon fees",
+        "No charge",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency room care",
+        "$75 Copay per visit",
+        "$75 Copay per visit",
+        "None"
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency medical transportation",
+        "$50 Copay per occurrence",
+        "$50 Copay per occurrence",
+        "None"
+      ],
+      [
+        "If you need immediate medical attention",
+        "Urgent care",
+        "$20 Copay per visit",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you have a hospital stay",
+        "Facility fee (e.g., hospital room)",
+        "$150 Copay per admission",
+        "30% Coinsurance",
+        "Preauthorization is required. If you don\u2019t get preauthorization, benefits could be reduced by 100% of the total cost of the service."
+      ],
+      [
+        "If you have a hospital stay",
+        "Physician/surgeon fees",
+        "No charge",
+        "30% Coinsurance",
+        ""
+      ],
+      [
+        "If you have mental health, behavioral health, or substance abuse services",
+        "Outpatient services",
+        "$20 Copay per office visit; $10 Copay per visit Mental Health; $5 Copay per visit Substance abuse Group Therapy; No charge other outpatient services",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you have mental health, behavioral health, or substance abuse services",
+        "Inpatient services",
+        "$150 Copay per admission",
+        "30% Coinsurance",
+        "Preauthorization is required. If you don\u2019t get preauthorization, benefits could be reduced by 100% of the total cost of the service."
+      ],
+      [
+        "If you are pregnant",
+        "Office visits",
+        "No charge; Deductible Waived",
+        "30% Coinsurance",
+        "Cost sharing does not apply for preventive services. Depending on the type of services, deductible, copayment or coinsurance may apply. Maternity care may include tests and services described elsewhere in the SBC (i.e. ultrasound)."
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery professional services",
+        "No charge",
+        "30% Coinsurance",
+        ""
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery facility services",
+        "$150 Copay per admission",
+        "30% Coinsurance",
+        ""
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Home health care",
+        "No charge",
+        "30% Coinsurance",
+        "100 Maximum visits per calendar year"
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Rehabilitation services",
+        "$20 Copay per visit",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Habilitation services",
+        "$20 Copay per visit",
+        "30% Coinsurance",
+        "Habilitation services for Learning Disabilities are not covered."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Skilled nursing care",
+        "$200 Copay per admission",
+        "30% Coinsurance",
+        "100 Maximum days per calendar year; Preauthorization is required. If you don\u2019t get preauthorization, benefits could be reduced by 100% of the total cost of the service."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Durable medical equipment",
+        "$20 Copay per occurrence",
+        "20% Coinsurance",
+        "None"
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Hospice service",
+        "No charge",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s eye exam",
+        "$10 Copay per exam",
+        "30% Coinsurance",
+        "None"
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s glasses",
+        "Not covered",
+        "Not covered",
+        "None"
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children\u2019s dental check-up",
+        "Not covered",
+        "Not covered",
+        "None"
+      ]
+    ]
+  },
+  "important_questions": {
+    "columns": [
+      "Important Questions",
+      "Answers",
+      "Why this Matters:"
+    ],
+    "rows": [
+      [
+        "What is the overall deductible?",
+        "$1,650 person / $3,300 family",
+        "Generally, you must pay all the costs from providers up to the deductible amount before this plan begins to pay. If you have other family members on the plan, the overall family deductible must be met before the plan begins to pay."
+      ],
+      [
+        "Are there services covered before you meet your deductible?",
+        "Yes. Preventive care services are covered before you meet your deductible.",
+        "This plan covers some items and services even if you haven\u2019t yet met the deductible amount. But a copayment or coinsurance may apply. For example, this plan covers certain preventive services without cost-sharing and before you meet your deductible. See a list of covered preventive services at https://www.healthcare.gov/coverage/preventive-care-benefits/"
+      ],
+      [
+        "Are there other deductibles for specific services?",
+        "No.",
+        "You don\u2019t have to meet deductibles for specific services."
+      ],
+      [
+        "What is the out\u2013of\u2013pocket limit for this plan?",
+        "$3,000 person / $6,000 family In-network $5,000 person / $10,000 family Out-of-network",
+        "The out-of-pocket limit is the most you could pay in a year for covered services. If you have other family members in this plan, the overall family out-of-pocket limit must be met."
+      ],
+      [
+        "What is not included in the out\u2013of\u2013pocket limit?",
+        "Penalties, premiums, balance billing charges, and health care this plan doesn\u2019t cover.",
+        "Even though you pay these expenses, they don\u2019t count toward the out-of-pocket limit."
+      ],
+      [
+        "Will you pay less if you use a network provider?",
+        "Yes. See www.umr.com or call 1-800-207-3172 for a list of network providers.",
+        "This plan uses a provider network. You will pay less if you use a provider in the plan\u2019s network. You will pay the most if you use an out-of-network provider, and you might receive a bill from a provider for the difference between the provider\u2019s charge and what your plan pays (balance billing). Be aware, your network provider might use an out-of-network provider for some services (such as lab work). Check with your provider before you get services."
+      ],
+      [
+        "Do you need a referral to see a specialist?",
+        "No.",
+        "You can see the specialist you choose without a referral."
+      ]
+    ]
+  },
+  "excluded_services": [
+    "Cosmetic surgery",
+    "Dental care (Adult)",
+    "Infertility treatment",
+    "Long-term care",
+    "Non-emergency care when traveling outside the U.S.",
+    "Private-duty nursing",
+    "Routine foot care",
+    "Weight loss programs"
+  ],
+  "other_covered_services": [
+    "Acupuncture",
+    "Bariatric surgery",
+    "Chiropractic care",
+    "Hearing aids",
+    "Routine eye care (Adult)"
+  ]
+}

@@ -541,7 +541,7 @@ def clean_whitespace(rows: List[list]) -> List[list]:
 
 def normalize_document(
     pages: List[List[List[List[Optional[str]]]]], spec: TableSpec
-) -> List[list]:
+) -> Tuple[List[list], Optional[List[Optional[str]]]]:
     """Run normalization across every page of a document for the table type
     described by `spec`, carrying label, last-row, and pending-row state
     forward across page boundaries.
@@ -564,12 +564,28 @@ def normalize_document(
     If spec has no stop_marker set, the continuation fallback never
     triggers, preserving the stricter "only process pages with our own
     marker" behavior.
+
+    Also returns the resolved header labels -- the actual per-column
+    header text for this document (e.g. ["Common Medical Event",
+    "Network Provider", "Out-of-Network Provider", "Limitations,
+    Exceptions, & Other Important Information"]), captured from the
+    FIRST page where a real header for this spec was resolved (not the
+    positional fallback used for headerless continuation tables, which
+    has no header text of its own to report). This is data
+    resolve_columns/resolve_header_block already compute internally on
+    every run; previously nothing kept it once column_indices was
+    derived. Downstream consumers (the data/processed driver script) use
+    this to know what each positional content column actually means for
+    THIS document without re-deriving it from the raw PDF later. Returns
+    None if this spec's header was never resolved from real header text
+    on any page (only the positional fallback ran throughout).
     """
     all_cleaned_rows: List[list] = []
     carried_category: Optional[str] = None
     carried_last_row: Optional[list] = None
     carried_pending_rows: List[list] = []
     column_indices: Optional[Tuple[Optional[int], List[int], Optional[int]]] = None
+    header_labels: Optional[List[Optional[str]]] = None
 
     for page_tables in pages:
         table, header_row_index = find_table_and_header(page_tables, spec)
@@ -583,6 +599,13 @@ def normalize_document(
                 # roles from the table's actual row shape instead, the same
                 # fallback already used for headerless continuation tables.
                 column_indices = derive_positional_columns(table)
+            elif header_labels is None:
+                label_idx, content_idxs, overflow_idx = column_indices
+                header_labels = (
+                    [_get(header_row, label_idx)]
+                    + [_get(header_row, idx) for idx in content_idxs]
+                    + [_get(header_row, overflow_idx)]
+                )
             cleaned, carried_category, carried_last_row, carried_pending_rows = normalize_rows(
                 table[header_end_index + 1:],
                 spec,
@@ -622,4 +645,4 @@ def normalize_document(
         if stop_idx is not None:
             break
 
-    return clean_whitespace(all_cleaned_rows)
+    return clean_whitespace(all_cleaned_rows), header_labels
