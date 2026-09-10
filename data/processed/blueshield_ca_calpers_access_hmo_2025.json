@@ -1,0 +1,294 @@
+{
+  "source_filename": "blueshield_ca_calpers_access_hmo_2025.pdf",
+  "insurer": "Blue Shield of CA",
+  "notes": "Two separate OOP maximums on one plan: Medical $1,500/$3,000 plus a separate Pharmacy $7,700/$15,400 -- extraction schema cannot assume one OOP max number per plan.",
+  "header_metadata": {
+    "insurer": "Blue Shield of CA",
+    "plan_name": "CalPERS Access+ HMO",
+    "coverage_period": "1/1/2025 \u2013 12/31/2025",
+    "coverage_for": "Individual + Family",
+    "plan_type": "HMO"
+  },
+  "grid_table": {
+    "columns": [
+      "Common Medical \nEvent",
+      "Services You May Need",
+      "What You Will Pay",
+      null,
+      "Limitations, Exceptions, & Other \nImportant Information"
+    ],
+    "rows": [
+      [
+        "If you visit a health care provider's office or clinic",
+        "Primary care visit to treat an injury or illness",
+        "$15/visit",
+        "Not Covered",
+        "----------------------None---------------------"
+      ],
+      [
+        "If you visit a health care provider's office or clinic",
+        "Specialist visit",
+        "Access+ Specialist: $30/visit Other Specialist: $15/visit",
+        "Not Covered",
+        "Self-referral is available for Access+ Specialist visits."
+      ],
+      [
+        "If you visit a health care provider's office or clinic",
+        "Preventive care/screening /immunization",
+        "No Charge",
+        "Not Covered",
+        "You may have to pay for services that aren\u2019t preventive. Ask your provider if the services needed are preventive. Then check what your plan will pay for."
+      ],
+      [
+        "If you have a test",
+        "Diagnostic test (x-ray, blood work)",
+        "Lab: No Charge X-Ray & Imaging: No Charge Other Diagnostic Examination: No Charge",
+        "Lab: Not Covered X-Ray & Imaging: Not Covered Other Diagnostic Examination: Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits. The services listed are at a freestanding location."
+      ],
+      [
+        "If you have a test",
+        "Imaging (CT/PET scans, MRIs)",
+        "Outpatient Radiology Center: No Charge Outpatient Hospital: No Charge",
+        "Outpatient Radiology Center: Not Covered Outpatient Hospital: Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://myoptions.blueshi eldca.com/calpers/phar macy.",
+        "Tier 1",
+        "Retail: $5/prescription Extended Quantity of Maintenance Drugs at Select Retail Pharmacies: $10/prescription Mail Order: $10/prescription",
+        "Retail: Not Covered Mail Service: Not Covered",
+        "Preauthorization is required for select drugs. Failure to obtain preauthorization may result in non- payment of benefits. R etail: Covers up to a 30-day supply; 50% coinsurance of Blue Shield contracted rate for drugs to treat erectile dysfunction. 90-days may be covered with a copayment for each 30-day supply."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://myoptions.blueshi eldca.com/calpers/phar macy.",
+        "Tier 2",
+        "Retail: $20/prescription Extended Quantity of Maintenance Drugs at Select Retail Pharmacies: $40/prescription Mail Order: $40/prescription",
+        "Retail: Not Covered Mail Service: Not Covered",
+        ""
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://myoptions.blueshi eldca.com/calpers/phar macy.",
+        "Tier 3",
+        "Retail: $50/prescription Extended Quantity of Maintenance Drugs at Select Retail Pharmacies: $100/prescription Mail Order: $100/prescription",
+        "Retail: Not Covered Mail Service: Not Covered",
+        "Extended Quantity of Maintenance Drugs at Select Retail Pharmacies: Covers up to a 90-day supply. A list of select retail pharmacies can be obtained by going to the Pharmacy Resources page. M ail Service: Covers up to a 90-day supply."
+      ],
+      [
+        "If you need drugs to treat your illness or condition More information about prescription drug coverage is available at http://myoptions.blueshi eldca.com/calpers/phar macy.",
+        "Tier 4",
+        "Retail: $30/prescription Extended Quantity of Maintenance Drugs at Select Retail Pharmacies: $60/prescription Mail Order: $60/prescription",
+        "Retail: Not Covered Mail Service: Not Covered",
+        "Covers up to a 30-day supply. Coverage limited to drugs dispensed by Network Specialty Pharmacies unless medically necessary for a covered emergency. Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If you have outpatient surgery",
+        "Facility fee (e.g., ambulatory surgery center)",
+        "Ambulatory Surgery Center: No Charge Outpatient Hospital: No Charge",
+        "Ambulatory Surgery Center: Not Covered Outpatient Hospital: Not Covered",
+        "----------------------None----------------------"
+      ],
+      [
+        "If you have outpatient surgery",
+        "Physician/surgeon fees",
+        "No Charge",
+        "Not Covered",
+        ""
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency room care",
+        "Facility Fee: $50/visit Physician Fee: No Charge",
+        "Facility Fee: $50/visit Physician Fee: No Charge",
+        "Emergency services copayment does not apply if Member is admitted directly to hospital as an inpatient from emergency room or kept for observation and hospital bills for an emergency room observation visit."
+      ],
+      [
+        "If you need immediate medical attention",
+        "Emergency medical transportation",
+        "No Charge",
+        "No Charge",
+        "This payment is for emergency or authorized transport."
+      ],
+      [
+        "If you need immediate medical attention",
+        "Urgent care",
+        "$15/visit",
+        "Within Plan Service Area: Not Covered Outside Plan Service Area: $15/visit",
+        "----------------------None----------------------"
+      ],
+      [
+        "If you have a hospital stay",
+        "Facility fee (e.g., hospital room)",
+        "No Charge",
+        "Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If you have a hospital stay",
+        "Physician/surgeon fees",
+        "No Charge",
+        "Not Covered",
+        "----------------------None----------------------"
+      ],
+      [
+        "If you need mental health, behavioral health, or substance abuse services",
+        "Outpatient services",
+        "Office Visit: $15/visit Other Outpatient Services: No Charge Partial Hospitalization: No Charge Psychological Testing: No Charge",
+        "Office Visit: Not Covered Other Outpatient Services: Not Covered Partial Hospitalization: Not Covered Psychological Testing: Not Covered",
+        "Preauthorization is required except for office visits and office-based opioid treatment. Failure to obtain preauthorization may result in non- payment of benefits."
+      ],
+      [
+        "If you need mental health, behavioral health, or substance abuse services",
+        "Inpatient services",
+        "Physician Inpatient Services: No Charge Hospital Services: No Charge Residential Care: No Charge",
+        "Physician Inpatient Services: Not Covered Hospital Services: Not Covered Residential Care: Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If you are pregnant",
+        "Office visits",
+        "No Charge",
+        "Not Covered",
+        "----------------------None----------------------"
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery professional services",
+        "No Charge",
+        "Not Covered",
+        ""
+      ],
+      [
+        "If you are pregnant",
+        "Childbirth/delivery facility services",
+        "No Charge",
+        "Not Covered",
+        ""
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Home health care",
+        "No Charge",
+        "Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Rehabilitation services",
+        "Office Visit: $15/visit Outpatient Hospital: $15/visit",
+        "Office Visit: Not Covered Outpatient Hospital: Not Covered",
+        "----------------------None----------------------"
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Habilitation services",
+        "Office Visit: $15/visit Outpatient Hospital: $15/visit",
+        "Office Visit: Not Covered Outpatient Hospital: Not Covered",
+        ""
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Skilled nursing care",
+        "Freestanding Skilled Nursing Facility (SNF): No Charge Hospital-based Skilled Nursing Facility (SNF): No Charge",
+        "Freestanding Skilled Nursing Facility (SNF): Not Covered Hospital-based Skilled Nursing Facility (SNF): Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits. Coverage limited to 100 days per member per benefit period."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Durable medical equipment",
+        "No Charge",
+        "Not Covered",
+        "Preauthorization is required. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If you need help recovering or have other special health needs",
+        "Hospice services",
+        "No Charge",
+        "Not Covered",
+        "Preauthorization is required except for pre-hospice consultation. Failure to obtain preauthorization may result in non-payment of benefits."
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children's eye exam",
+        "No Charge",
+        "Not Covered",
+        "----------------------None----------------------"
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children's glasses",
+        "Not Covered",
+        "Not Covered",
+        ""
+      ],
+      [
+        "If your child needs dental or eye care",
+        "Children's dental check-up",
+        "Not Covered",
+        "Not Covered",
+        ""
+      ]
+    ]
+  },
+  "important_questions": {
+    "columns": [
+      "Important Questions",
+      "Answers",
+      "Why This Matters:"
+    ],
+    "rows": [
+      [
+        "What is the overall deductible?",
+        "$0.",
+        "See the Common Medical Events chart below for your costs for services this plan covers."
+      ],
+      [
+        "Are there services covered before you meet your deductible?",
+        "Yes. Preventive care and services listed in your complete terms of coverage.",
+        "This plan covers some items and services even if you haven\u2019t yet met the deductible amount. But a copayment or coinsurance may apply. For example, this plan covers certain preventive services without cost-sharing and before you meet your deductible See a list of covered preventive services at healthcare.gov/coverage/preventive-care-benefits/."
+      ],
+      [
+        "Are there other deductibles for specific services?",
+        "No.",
+        "You don\u2019t have to meet deductibles for specific services."
+      ],
+      [
+        "What is the out-of-pocket limit for this plan?",
+        "Medical: $1,500 per individual / $3,000 per family. Pharmacy: $7,700 per individual / $15,400 per family. Includes $1,000 for mail-service formulary prescription drugs per member.",
+        "The out-of-pocket limit is the most you could pay in a year for covered services. If you have other family members in this plan, they have to meet their own out-of-pocket limits until the overall family out-of-pocket limit has been met."
+      ],
+      [
+        "What is not included in the out-of-pocket limit?",
+        "Copayments for certain services, premiums, and health care this plan doesn\u2019t cover.",
+        "Even though you pay these expenses, they don\u2019t count toward the out-of-pocket limit."
+      ],
+      [
+        "Will you pay less if you use a network provider?",
+        "Yes. See www.blueshieldca.com/calpers or call 1-800-334-5847 for a list of network providers.",
+        "This plan uses a provider network. You will pay less if you use a provider in the plan\u2019s network. You will pay the most if you use an out-of-network provider, and you might receive a bill from a provider for the difference between the provider\u2019s charge and what your plan pays (balance billing). Be aware, your network provider might use an out-of- network provider for some services (such as lab work). Check with your provider before you get services."
+      ],
+      [
+        "Do you need a referral to see a specialist?",
+        "Yes.",
+        "This plan will pay some or all of the costs to see a specialist for covered services but only if you have a referral before you see the specialist."
+      ]
+    ]
+  },
+  "excluded_services": [
+    "Cosmetic surgery",
+    "Dental care (Adult)",
+    "Long-term care",
+    "Non-emergency care when traveling outside the U.S.",
+    "Private-duty nursing",
+    "Routine eye care (Adult)",
+    "Routine foot care",
+    "Weight loss programs"
+  ],
+  "other_covered_services": [
+    "Acupuncture",
+    "Bariatric surgery",
+    "Chiropractic care",
+    "Hearing aids",
+    "Infertility treatment"
+  ]
+}

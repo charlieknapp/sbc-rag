@@ -9,7 +9,7 @@ from src.parsing.normalize import normalize_document, IMPORTANT_QUESTIONS_SPEC
 PDF_PATH = "data/raw/anthem_ppo_hsa_2022.pdf"
 
 pages = extract_camelot_tables(PDF_PATH, flavor="lattice")
-cleaned_rows = normalize_document(pages, IMPORTANT_QUESTIONS_SPEC)
+cleaned_rows, _ = normalize_document(pages, IMPORTANT_QUESTIONS_SPEC)
 
 print(f"Normalized into {len(cleaned_rows)} clean row(s):\n")
 for row in cleaned_rows:
