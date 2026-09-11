@@ -4,6 +4,7 @@ charset-normalizer==3.5.1
 click==8.5.0
 cryptography==50.0.1
 et_xmlfile==2.0.0
+faiss-cpu==1.15.0
 mypy_extensions==1.1.0
 numpy==2.2.6
 opencv-python-headless==5.0.0.93
@@ -17,6 +18,8 @@ pycparser==3.0
 pypdfium2==5.13.0
 python-dateutil==2.9.0.post0
 pytz==2026.3.post1
+rank-bm25==0.2.2
+sentence-transformers==6.0.1
 six==1.17.0
 tabulate==0.10.0
 typing_extensions==4.16.0

@@ -3,7 +3,7 @@ RAG-based Q&amp;A tool for health benefit plans — parses real SBC (Summary of 
 
 ## Status
 
-In progress — built over ~4 weeks. Phases 0-3 (environment, data acquisition, parsing, chunking) are complete. Phase 4 (retrieval) is next. See phase notes below for what's done vs. in progress as of the review date.
+In progress — built over ~4 weeks. Phases 0-4 (environment, data acquisition, parsing, chunking, retrieval) are complete. Phase 5 (structured extraction) is next. See phase notes below for what's done vs. in progress as of the review date.
 
 
 ## Project Structure
@@ -81,7 +81,32 @@ Because the source PDFs are already reduced to clean, structured JSON in `data/p
 320 chunks were produced across all 8 documents (`data/processed/chunks.json`), with per-document counts cross-checked against the already-validated parsing row/item counts for every document.
 
 ### 3. Retrieval
-*(TODO: BM25 vs. semantic search — how each performed, on which question types, and why)*
+
+With 320 chunks in hand, retrieval's job is narrowing that down to a handful of chunks actually relevant to a given question — the assignment calls for both a keyword method and a semantic method, tested against real questions rather than assumed to behave a certain way.
+
+**BM25 (keyword search)** (`src/retrieval/bm25_retriever.py`, via `rank-bm25`) scores chunks by word overlap with the query, weighted by term rarity and adjusted for chunk length — no understanding of meaning, purely lexical matching. Custom tokenization strips punctuation and a hand-curated stopword list; a real bug was caught and fixed here via a failing test query, not assumed away — the initial tokenizer left bare single-character fragments like `'s'` (from splitting contractions such as "What's") untouched, which measurably diluted real signal on short queries. Fixing it (filtering tokens of length 1) took BM25 on one previously-failing test question from 0/8 relevant chunks found to 6/8.
+
+**Semantic search (embeddings)** (`src/retrieval/embedding_retriever.py`, via `sentence-transformers`'s `all-MiniLM-L6-v2` — the same model used for the Phase 2 chunking-boundary evaluation — and FAISS's `IndexFlatIP` over L2-normalized vectors, i.e. exact cosine similarity) embeds both the query and every chunk, retrieving by vector closeness rather than literal word match. FAISS was chosen over Chroma as the vector store specifically because it's a tooling decision, not a second method to compare — 320 chunks rebuilt fresh from `chunks.json` on every run don't need Chroma's persistence or metadata-filtering layer.
+
+**Evaluation.** A 27-question eval set (`eval/questions.jsonl`) was built directly from the real chunk data, with ground-truth `chunk_id`s and expected answers — not approximated from summary values — spanning five deliberate categories: exact-SBC-vocabulary lookups, paraphrased questions, questions using rare/distinctive terms, questions naming no specific plan (genuinely ambiguous across all 8), cross-plan comparison questions, and one deliberately unanswerable question (a plan that doesn't exist in the corpus, to probe fabrication risk ahead of Phase 6). `eval/run_retrieval_eval.py` runs both retrievers at k=5 (matching the top-k that will actually reach the LLM at generation time) and reports hit-rate by category:
+
+| Category | BM25 | Embeddings |
+|---|---|---|
+| Exact vocabulary | 100% | 100% |
+| Paraphrased | 50% | 67% |
+| Rare/distinctive terms | 100% | 75% |
+| No plan named (ambiguous) | 80% | 80% |
+| Cross-plan comparison | 60% | 60% |
+
+**This is the core, measured result the phase was built to test:** BM25 and embeddings do win on different, predictable question types — BM25 on distinctive vocabulary, embeddings on paraphrased wording — confirming the hypothesis with real numbers instead of assuming it. Both tie on easy exact-match lookups, as expected.
+
+**Real failure modes found and root-caused, not just observed:**
+- *Confusable adjacent rows*: a query like "what do I pay to see a specialist" can outrank the true cost row with a topically-adjacent "do you need a referral to see a specialist" row, since both share real vocabulary/meaning around paying for specialist care despite answering different questions. Embeddings are less confidently wrong here (near-tied scores) than BM25 (a 3x score gap favoring the wrong row), but neither method is immune.
+- *Uniform boilerplate crowding*: on plans with unusually flat cost structures (e.g. Cigna's plan, where deductible = out-of-pocket max, so nearly every service reads "0% coinsurance"), embeddings can fail to distinguish between many near-identical chunks and miss the specific one asked about entirely.
+- *Genuine SBC-vocabulary gaps*: some real-world phrasing (e.g. "therapy visit") has no literal match anywhere in the source document's own text (which says "outpatient services," never "therapy") — a gap in the source data's vocabulary, not a retrieval bug, that keyword matching structurally cannot bridge and embeddings can only partially close.
+- *Term-frequency bias toward complex answers*: BM25 can underrank the simplest, most favorable answers (e.g. a $0 deductible, explained in one short sentence) relative to more complex ones that repeat the query term more often purely because they require more explanatory text — a structural property of frequency-based scoring, not a bug.
+
+**Known, documented architectural limitation:** cross-plan comparison questions ("which plan has the lowest deductible") cannot be reliably answered by a single top-k retrieval call from either method — nothing guarantees one comparable row gets returned per plan. Included in the eval set specifically to demonstrate and quantify this gap (both methods score only 60%, and even a "hit" often means finding just one relevant plan's chunk, not enough to actually answer a comparison) rather than to pretend it's solved; Phase 5/6 will need to account for this rather than be surprised by it.
 
 ### 4. Structured Extraction
 *(TODO: schema design, extraction accuracy against ground truth)*
