@@ -1,0 +1,394 @@
+[
+  {
+    "source_filename": "aetna_md_bronze_ppo_2019.pdf",
+    "insurer": "Aetna",
+    "plan_name": "MD Bronze PPO 6000 80/60 HSA",
+    "plan_type": "PPO",
+    "deductibles": [
+      {
+        "label": "individual, in-network",
+        "amount": 6000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, in-network",
+        "amount": 12000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "individual, out-of-network",
+        "amount": 13500.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, out-of-network",
+        "amount": 27000.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "individual, in-network",
+        "amount": 6550.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, in-network",
+        "amount": 13300.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "individual, out-of-network",
+        "amount": null,
+        "is_unlimited": true
+      },
+      {
+        "label": "family, out-of-network",
+        "amount": null,
+        "is_unlimited": true
+      }
+    ],
+    "referral_required": false,
+    "raw_referral_text": "No..",
+    "raw_deductible_text": "For each Plan Year, In-network: Individual $6,000 / Family $12,000. Out-of-network: Individual $13,500 / Family $27,000..",
+    "raw_oop_max_text": "In-network: Individual $6,550 / Family $13,300. Out-of-Network: Individual Unlimited / Family Unlimited.."
+  },
+  {
+    "source_filename": "anthem_ppo_hsa_2022.pdf",
+    "insurer": "Anthem",
+    "plan_name": "Anthem\u00ae BlueCross Beigene USA, Inc.: Custom Anthem PPO HSA-H 1500 2800 3000 0 20 HSA",
+    "plan_type": "PPO +",
+    "deductibles": [
+      {
+        "label": "person, in-network",
+        "amount": 1500.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "member, in-network",
+        "amount": 2800.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, in-network",
+        "amount": 3000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "person, out-of-network",
+        "amount": 3000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "member, out-of-network",
+        "amount": 3000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, out-of-network",
+        "amount": 6000.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "person, in-network",
+        "amount": 6450.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "member, in-network",
+        "amount": 6450.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, in-network",
+        "amount": 12900.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "person, out-of-network",
+        "amount": 7500.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "member, out-of-network",
+        "amount": 7500.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, out-of-network",
+        "amount": 15000.0,
+        "is_unlimited": false
+      }
+    ],
+    "referral_required": false,
+    "raw_referral_text": "No..",
+    "raw_deductible_text": "$1,500/person or $2,800/member or $3,000/family for In-Network Providers. $3,000/person or $3,000/member or $6,000/family for Non- Network Providers..",
+    "raw_oop_max_text": "$6,450/person or $6,450/member or $12,900/family for In-Network Providers. $7,500/person or $7,500/member or $15,000/family for Non- Network Providers.."
+  },
+  {
+    "source_filename": "bcbsil_bluechoice_bronze_ppo_2024.pdf",
+    "insurer": "Blue Cross Blue Shield of IL",
+    "plan_name": "Blue Choice Preferred Bronze PPOSM 201",
+    "plan_type": "PPO",
+    "deductibles": [
+      {
+        "label": "individual, in-network",
+        "amount": 7000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "individual, out-of-network",
+        "amount": 15000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, in-network",
+        "amount": 14000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, out-of-network",
+        "amount": 45000.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "individual, in-network",
+        "amount": 9450.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "individual, out-of-network",
+        "amount": null,
+        "is_unlimited": true
+      },
+      {
+        "label": "family, in-network",
+        "amount": 18900.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family, out-of-network",
+        "amount": null,
+        "is_unlimited": true
+      }
+    ],
+    "referral_required": false,
+    "raw_referral_text": "No..",
+    "raw_deductible_text": "Individual: Participating $7,000; Non- Participating $15,000 Family: Participating $14,000; Non- Participating $45,000.",
+    "raw_oop_max_text": "Individual: Participating $9,450; Non- Participating Unlimited Family: Participating $18,900; Non- Participating Unlimited."
+  },
+  {
+    "source_filename": "blueshield_ca_calpers_access_hmo_2025.pdf",
+    "insurer": "Blue Shield of CA",
+    "plan_name": "CalPERS Access+ HMO",
+    "plan_type": "HMO",
+    "deductibles": [
+      {
+        "label": "all",
+        "amount": 0.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "medical_individual",
+        "amount": 1500.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "medical_family",
+        "amount": 3000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "pharmacy_individual",
+        "amount": 7700.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "pharmacy_family",
+        "amount": 15400.0,
+        "is_unlimited": false
+      }
+    ],
+    "referral_required": true,
+    "raw_referral_text": "Yes..",
+    "raw_deductible_text": "$0..",
+    "raw_oop_max_text": "Medical: $1,500 per individual / $3,000 per family. Pharmacy: $7,700 per individual / $15,400 per family. Includes $1,000 for mail-service formulary prescription drugs per member.."
+  },
+  {
+    "source_filename": "cigna_nc_connect_bronze_hmo_2024.pdf",
+    "insurer": "Cigna",
+    "plan_name": "Cigna HealthCare of North Carolina, Inc.: Connect Bronze 9450 Indiv Med Deductible",
+    "plan_type": "HMO",
+    "deductibles": [
+      {
+        "label": "person",
+        "amount": 9450.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family",
+        "amount": 18900.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "person",
+        "amount": 9450.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family",
+        "amount": 18900.0,
+        "is_unlimited": false
+      }
+    ],
+    "referral_required": false,
+    "raw_referral_text": "No..",
+    "raw_deductible_text": "$9,450 person/ $18,900 family.",
+    "raw_oop_max_text": "$9,450 person/ $18,900 family."
+  },
+  {
+    "source_filename": "highmark_hdhp_ppoblue_2026.pdf",
+    "insurer": "Highmark BCBS",
+    "plan_name": "Carnegie Mellon University: PPO Blue",
+    "plan_type": "HDHP",
+    "deductibles": [
+      {
+        "label": "in-network_individual",
+        "amount": 2000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "in-network_family",
+        "amount": 4000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "out-of-network_individual",
+        "amount": 4000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "out-of-network_family",
+        "amount": 8000.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "network_individual",
+        "amount": 4000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "network_family",
+        "amount": 8000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "out-of-network_individual",
+        "amount": 8000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "out-of-network_family",
+        "amount": 16000.0,
+        "is_unlimited": false
+      }
+    ],
+    "referral_required": false,
+    "raw_referral_text": "o No..",
+    "raw_deductible_text": "$2,000 individual/$4,000 family network. $4,000 individual/$8,000 family out-of-network..",
+    "raw_oop_max_text": "$4,000 individual/$8,000 family network out-of- pocket limit, up to a total maximum out-of-pocket of $4,000 individual/$8,000 family. $8,000 individual/$16,000 family out-of-network.."
+  },
+  {
+    "source_filename": "kaiser_ca_traditional_hmo_2026.pdf",
+    "insurer": "Kaiser Permanente",
+    "plan_name": "CalPERS TRADITIONAL HMO",
+    "plan_type": "HMO",
+    "deductibles": [
+      {
+        "label": "all",
+        "amount": 0.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "medical_individual",
+        "amount": 1500.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "medical_family",
+        "amount": 3000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "prescription_drugs_individual",
+        "amount": 8650.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "prescription_drugs_family",
+        "amount": 17300.0,
+        "is_unlimited": false
+      }
+    ],
+    "referral_required": true,
+    "raw_referral_text": "Yes, but you may self-refer to certain specialists..",
+    "raw_deductible_text": "$0.",
+    "raw_oop_max_text": "$1,500 Individual / $3,000 Family. $8,650 Individual / $17,300 Family for prescription drugs.."
+  },
+  {
+    "source_filename": "uhc_stancounty_hdhp_2025.pdf",
+    "insurer": "UnitedHealthcare",
+    "plan_name": "Stanislaus County \u2013 UnitedHealthcare High Deductible Health Plan",
+    "plan_type": "HDHP",
+    "deductibles": [
+      {
+        "label": "person",
+        "amount": 1650.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "family",
+        "amount": 3300.0,
+        "is_unlimited": false
+      }
+    ],
+    "out_of_pocket_maxes": [
+      {
+        "label": "in-network_person",
+        "amount": 3000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "in-network_family",
+        "amount": 6000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "out-of-network_person",
+        "amount": 5000.0,
+        "is_unlimited": false
+      },
+      {
+        "label": "out-of-network_family",
+        "amount": 10000.0,
+        "is_unlimited": false
+      }
+    ],
+    "referral_required": false,
+    "raw_referral_text": "No..",
+    "raw_deductible_text": "$1,650 person / $3,300 family.",
+    "raw_oop_max_text": "$3,000 person / $6,000 family In-network $5,000 person / $10,000 family Out-of-network."
+  }
+]
