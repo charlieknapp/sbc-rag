@@ -1,31 +1,52 @@
-# notebooks/test_schema.py
 import sys
-sys.path.append("src")
+from pathlib import Path
 
-from extraction.schema import AmountEntry, PlanFacts
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-# should succeed
-kaiser = PlanFacts(
-    source_filename="kaiser_ca_traditional_hmo_2026.pdf",
-    insurer="Kaiser Permanente",
-    plan_name="CalPERS TRADITIONAL HMO",
-    plan_type="HMO",
-    deductibles=[AmountEntry(label="individual", amount=0.0)],
-    out_of_pocket_maxes=[
-        AmountEntry(label="individual, medical", amount=1500.0),
-        AmountEntry(label="family, medical", amount=3000.0),
+from src.generation.schema import Citation, GeneratedAnswer
+from pydantic import ValidationError
+
+# --- Valid case: a normal answer with both citation types ---
+
+answer = GeneratedAnswer(
+    answer="Your deductible on the Highmark plan is $2,000 individual / $4,000 family in-network.",
+    citations=[
+        Citation(
+            insurer="Highmark BCBS",
+            plan_name="Carnegie Mellon University: PPO Blue",
+            section="deductible",
+            source_type="verified_plan_data",
+        ),
+        Citation(
+            insurer="Highmark BCBS",
+            plan_name="Carnegie Mellon University: PPO Blue",
+            section="important_questions",
+            source_type="sbc_text",
+        ),
     ],
-    referral_required=False,
-    raw_referral_text="Yes, but you may self-refer to certain specialists.",
-    raw_deductible_text="$0",
-    raw_oop_max_text="$1,500 Individual / $3,000 Family.",
+    confident=True,
 )
-print("Kaiser built successfully:", kaiser.insurer)
+print("Valid answer built successfully:", answer.answer[:50], "...")
 
-# should raise — Aetna's out-of-network OOP max is "Unlimited," this represents it wrong
-# (both amount and is_unlimited set) to confirm the validator actually rejects it
+# --- Valid case: the low-confidence/refusal shape (no citations) ---
+
+refusal = GeneratedAnswer(
+    answer="I don't have enough information to answer that confidently.",
+    citations=[],
+    confident=False,
+)
+print("Refusal case built successfully:", refusal.confident, refusal.citations)
+
+# --- Invalid case: source_type isn't one of the two allowed literals ---
+
 try:
-    bad = AmountEntry(label="family, out-of-network", amount=27000.0, is_unlimited=True)
-    print("BUG: this should have raised but didn't")
-except ValueError as e:
-    print("Validator correctly rejected bad entry:", e)
+    Citation(
+        insurer="Highmark BCBS",
+        plan_name="Carnegie Mellon University: PPO Blue",
+        section="deductible",
+        source_type="made_up_type",
+    )
+    print("ERROR: should have raised a validation error and did not")
+except ValidationError as e:
+    print("Validator correctly rejected bad source_type:")
+    print(e)
