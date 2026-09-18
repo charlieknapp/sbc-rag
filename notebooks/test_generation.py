@@ -11,17 +11,17 @@ from src.generation.generation import generate_answer
 bm25 = BM25Retriever()
 embedding = EmbeddingRetriever()
 
-questions = [
-    "Which plan has the lowest deductible?",
-    "Which plan has the highest out-of-pocket limit?",
-]
+question = "What is the deductible for the Aetna plan?"
+bundle = gather_evidence(question, bm25, embedding)
+result, metrics = generate_answer(question, bundle)
 
-for q in questions:
-    bundle = gather_evidence(q, bm25, embedding)
-    result = generate_answer(q, bundle)
-    print(f"Q: {q}")
-    print(f"  confident={result.confident}")
-    print(f"  answer: {result.answer}")
-    for c in result.citations:
-        print(f"    - {c.insurer} | {c.section} | {c.source_type}")
-    print()
+print(f"Q: {question}")
+print(f"  confident={result.confident}")
+print(f"  answer: {result.answer}")
+for c in result.citations:
+    print(f"    - {c.insurer} | {c.section} | {c.source_type}")
+print()
+print(f"  latency: {metrics.latency_seconds:.2f}s")
+print(f"  input tokens: {metrics.input_tokens}")
+print(f"  output tokens: {metrics.output_tokens}")
+print(f"  estimated cost: ${metrics.estimated_cost_usd:.6f}")

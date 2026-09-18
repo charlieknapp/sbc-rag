@@ -54,6 +54,7 @@ COMPARISON_LABEL_MAP: dict[str, dict[ComparisonField, str]] = {
 class ComparisonEntry:
     insurer: str
     plan_name: str
+    source_filename: str
     amount: float
 
 
@@ -95,6 +96,7 @@ def compute_comparison(
             entries.append(ComparisonEntry(
                 insurer=plan["insurer"],
                 plan_name=plan["plan_name"],
+                source_filename=plan["source_filename"],
                 amount=canonical["amount"],
             ))
         if _has_unlimited_entry(plan, field):

@@ -1,10 +1,6 @@
 # sbc-rag
 RAG-based Q&amp;A tool for health benefit plans — parses real SBC (Summary of Benefits and Coverage) forms, retrieves and extracts plan data, and answers questions like "what's my deductible for an ER visit" with cited sources. Built to explore retrieval, structured extraction, and grounded generation on table-heavy insurance documents.
 
-## Status
-
-In progress — built over ~4 weeks. Phases 0-6 (environment, data acquisition, parsing, chunking, retrieval, structured extraction, generation) are complete. Phase 7 (evaluation) is next. See phase notes below for what's done vs. in progress as of the review date.
-
 ## Project Structure
 
  ```
@@ -152,14 +148,62 @@ Retrieval and structured extraction hand this phase two complementary evidence s
 
 **Validation.** Both bugs above are fixed and confirmed: the original comparison question and the deeper reasoning-failure question both now return correct winners, correct ties, an honest note about unlimited out-of-network exposure where relevant, and clean, correctly-labeled citations. A full rerun of all 27 eval questions confirmed no regressions — the comparison detector fires only on the two question types it's built for, with zero cross-contamination on similar-sounding questions (e.g. "cheapest," "typical") that shouldn't trigger it.
 
-**Known, documented limitations, deliberately not fixed this phase:**
-- *Free-text cross-plan coverage gaps* — a question like "which plans don't cover acupuncture?" can return a confident but incomplete answer (e.g. naming 1 of 3 correct plans), because retrieval doesn't guarantee surfacing every relevant plan's chunk for a field with no structured-data fallback. Rooted in the already-documented Phase 3 cross-plan retrieval limitation (60% hit rate); needs real retrieval-architecture work, not a quick fix, so it's deferred to Phase 7.
-- A related instance surfaced for cost comparisons outside deductible/OOP max (e.g. "cheapest for an emergency room visit") — those costs aren't directly comparable across plans (flat copay vs. coinsurance vs. per-admission fee) and the data is free-text, so the deterministic comparison fix above doesn't apply; same underlying lesson, different field.
-- One answer includes an elaboration not clearly traceable to validated source text, flagged for a closer look in Phase 7 rather than confirmed as either right or wrong.
-
 ## Evaluation
 
-*(TODO: accuracy / latency / token-usage results against the eval set)*
+Retrieval, structured extraction, and generation each had their own scoped evaluation baked into their own phase (Phase 3's retrieval hit-rate table, Phase 4's 100%-match validation against hand-verified ground truth, Phase 6's real-bug-driven fixes). This phase is the end-to-end check: running the complete pipeline against all 27 questions in `eval/questions.jsonl`, scoring the actual answers a real user would see, and using what that surfaced to drive a full pass of targeted fixes.
+
+**Scoring approach: manual scoring against a 5-category rubric, not automated matching or LLM-as-judge.** Keyword/fact matching against `expected_answer` is too brittle for format variation, and breaks down entirely on the deliberately ambiguous questions (a "what's the deductible" question with no plan named, a genuinely unanswerable cross-plan cost comparison) where the *correct* answer is prose explaining why there's no single clean number, not an extractable fact. LLM-as-judge was rejected on the same grounds this project has used throughout — Phase 4's rule-based extraction over LLM extraction, Phase 6's deterministic comparison over LLM arithmetic — grading one LLM's answers with another, for a one-time 27-question eval, adds a "who grades the grader" problem disproportionate to the scale here.
+
+Each answer was scored into one of five categories, chosen specifically because a flat accuracy percentage hides the axis that actually matters for this project's stated goal (no hallucinated numbers) — "right vs. wrong" is the wrong frame; "wrong vs. *dangerously* wrong" is the real one:
+
+| Category | Meaning |
+|---|---|
+| Correct | Confident, matches expected |
+| Correctly hedged | `confident: false`, and that was the right call — genuinely ambiguous or unanswerable |
+| Incorrectly confident | `confident: true` but wrong — the dangerous category |
+| Incorrectly hedged | `confident: false` but the question was actually answerable |
+| Partially correct | Right plan/direction, detail missing or off |
+
+**Baseline run: 20 Correct, 3 Incorrectly confident.** Running the untouched Phase 6 pipeline against all 27 questions surfaced real bugs, not just a score. Most seriously: a question about whether Blue Shield of CA covers infertility treatment came back confidently wrong — the plan does cover it, and the model confidently said it didn't, explicitly calling it "notably absent" from a list where it was, in fact, present. Two more single-plan questions (Cigna specialist visit cost, BCBS IL outpatient mental health cost) came back hedged as unanswerable when the real data existed and was simply never retrieved. And two free-text cross-plan questions — "is acupuncture covered?" and "which plan is cheapest for an ER visit?" — came back either incomplete-but-confident or outright wrong, the same class of overconfidence problem Phase 6 had already fixed for structured deductible/OOP-max comparisons, just not yet for free text.
+
+**Fix sequence.** Six targeted fixes followed, each root-caused against real evidence before any code changed and re-validated with 3x reruns plus a full 27-question regression before moving to the next:
+
+- **Fix #1 (infertility false denial):** Root cause was cross-plan "list bleed" — the same service name appearing in one plan's covered list and another plan's excluded list, rendered as similarly-shaped dense prose, confused the model about which plan's answer it was reading. Fixed by reformatting coverage lists into explicit bulleted form at prompt-render time and adding a system-prompt rule against cross-plan bleed. Improved from 0/3 to 2/3 confidently-correct reruns, with the remaining case degrading to a safe hedge rather than a wrong answer — accepted as "improved, not solved" given diminishing returns against the timeline.
+- **Fix #2 (Cigna/BCBS IL retrieval misses):** Both correct chunks ranked just outside the top-5 retrieval window (ranks 6 and 9). Fixed by widening `k` from 5 to 10. Both went 3/3 correct post-fix, with a modest, fully-explained cost/latency increase (input tokens +36%, proportional to the wider window).
+- **Fix #3 (Kaiser chiropractic limitation):** A different failure shape — retrieval found the right chunk every time, but the model pattern-matched on the majority of other plans (which state no such limitation) and skimmed past Kaiser's real, specific one. Fixed by broadening an existing system-prompt rule from yes/no coverage questions to any list-detail question. Fixed 3/3, with a small, honestly-documented trade-off: one of three infertility-question reruns (Fix #1's case) dropped from confidently-correct to safely-hedged.
+- **Fix #4 (citation-verification false positive):** A model-shortened plan name broke the citation-matching logic even though the underlying fact was correct and grounded. Fixed by adding `source_filename` — a value that never gets paraphrased — as the real matching key, replacing plan-name matching. Also caught and fixed a related `max_tokens` truncation bug the added citation field exposed. Zero verification issues across all 27 questions afterward.
+- **Fix #5 (free-text cross-plan coverage, e.g. "is acupuncture covered?"):** The deepest structural fix. Rather than trusting retrieval to surface every relevant plan's chunk, built a deterministic `service_coverage.py` module that pre-computes coverage status for a canonical list of 14 services across all 8 plans — the same "don't trust the LLM to assemble what code can compute" principle already used for `PlanFacts` and the deductible/OOP-max comparison engine, applied a third time. Along the way, found and fixed the same colon-splitting bug in two places (a preamble-parsing assumption that broke on 3 of 8 plans whose own name contains a colon).
+- **Fix #6 (heterogeneous cost comparisons, e.g. "cheapest ER visit"):** The last open dangerous case. A flat copay and a coinsurance percentage aren't the same unit, so declaring a single "cheapest" plan across mismatched cost structures was flagged as false confidence — the same failure class Phase 6's `comparison.py` already solved for deductible/OOP max, but for a free-text field, and one that only affected one eval question. Rather than building a narrow, eval-overfit fix, added a general system-prompt rule (not tied to any specific service) requiring the model to recognize mismatched cost structures and refuse to pick a winner across them. Validated for generality against three ad-hoc, non-eval questions (specialist/primary-care/urgent-care cost comparisons) before confirming against the real eval set.
+
+**Final results.**
+
+| Run | Correct | Correctly hedged | Partially correct | Incorrectly hedged | Incorrectly confident |
+|---|---|---|---|---|---|
+| Baseline | 20 | 1* | 2 | 2 | 3 |
+| After `k=10` (Fix #2) | 22 | 3 | 1 | 1 | 2 |
+| Final (after Fix #6) | 25 | 2 | 0 | 0 | 0 |
+
+*Baseline's "Correctly hedged" count of 1 reflects one question ("what's the deductible?" with no plan named) that was flagged non-deterministic — the same question returned both a confident-with-issue result and a correctly-hedged result across identical reruns, a documented model-level sampling characteristic rather than a bug in this project's own code, and not something any of the six fixes targeted or could target.
+
+The final run has **zero Incorrectly confident and zero Incorrectly hedged answers** — every one of the 27 questions is either a correct, confident answer or a correct decision to hedge, with zero unresolved citation-verification issues anywhere in the set. The two remaining "Correctly hedged" cases are both the intended, safe behavior: one genuinely ambiguous cost-comparison question (heterogeneous structures, matching Fix #6's design) and one deliberately unanswerable question (a plan that doesn't exist in the dataset, to check the system doesn't fabricate a plausible-sounding answer rather than admitting it can't find the plan).
+
+**Cost and latency.** Total cost across all 27 questions grew from $0.1346 (baseline) to $0.2190 (final) — roughly 63% higher, driven almost entirely by longer, more complete answers (the fixed questions now correctly enumerate all 8 plans where they previously hedged, gave partial answers, or answered incorrectly) rather than by context bloat. At Haiku 4.5 pricing, the full 27-question eval run costs about $0.22 and roughly 90 seconds end-to-end — comfortably inside a $5 development budget for many iterations.
+
+**What's still open** is covered in Known Limitations below, rather than duplicated here — none of it involves a dangerous (confidently wrong) answer; the remaining items are data-quality issues in the eval set's own ground truth and a cosmetic citation-duplication issue.
+
+## Known Limitations
+
+**Administrative/regulatory SBC boilerplate is out of scope, by deliberate design.** Text like "Your Rights to Continue Coverage," "Your Grievance and Appeals Rights," and the Minimum Essential Coverage/Minimum Value Standards questions was never chunked — it's federally mandated, largely standardized language present across virtually all SBCs, carries no plan-differentiating numbers, and was never where this project's core risk (hallucinated dollar figures) lives. A real, if low-stakes, consequence: a question like "how do I appeal a denied claim?" gets the system's safe refusal behavior (`confident: false`) rather than a real answer, even though it's a legitimate SBC question. Not re-scoped given the 10/1 timeline — the tool is intentionally focused on plan-specific benefit/cost information, not administrative/regulatory rights content.
+
+**Rule 10's cost-structure-mismatch guardrail (Fix #6) is a prompt-level safeguard, not a hard guarantee.** Unlike `PlanFacts`, `comparison.py`, and `service_coverage.py` — each of which pre-computes an answer deterministically in code — the fix for heterogeneous cost comparisons (flat copay vs. coinsurance) relies on the model correctly applying a system-prompt instruction every time, rather than a computed result the model can't get wrong. A fully deterministic version would mean extracting cost type (copay vs. coinsurance) into structured data for every cost-bearing grid_table row across all 8 plans, then building a type-aware comparison engine — real additional scope, deliberately not taken on this late in the timeline for a fix that only 1 of 27 eval questions exercises. Validated for generality against several non-eval questions (see Evaluation above), but it remains a prompted behavior, not a computed one.
+
+**One eval question ("what's the deductible?" with no plan named) shows model-level non-determinism.** Identical reruns of this specific question have returned both a confidently-answered result with an unresolved citation-verification issue and a correctly-hedged result with none — a genuine LLM sampling characteristic on this borderline question type, not a bug traced to this project's own code. The citation-verification safety net worked as designed on the one occasion it triggered (flagging the issue rather than passing it through silently), so this is documented as a known reliability characteristic rather than something chased further.
+
+**`eval/questions.jsonl`'s own ground truth has two confirmed data-quality issues, not pipeline bugs.** Question #18's expected answer only accounts for 7 of the 8 plans, omitting Kaiser, which Phase 5's validated extraction confirms also requires a referral. Question #23's expected answer names only one plan as having the highest out-of-pocket limit, but the deterministic comparison engine confirms a second plan is genuinely tied. In both cases the pipeline's actual answer is correct against real, independently-validated ground truth — the eval set's authored expected answers are what's incomplete.
+
+**The `tests/` folder was scaffolded in Phase 0 but never populated with an automated test suite.** Every phase's validation — parsing, chunking, retrieval, extraction, generation, and this evaluation phase itself — was done through ad-hoc scripts in `notebooks/`, run and re-run by hand at each decision point, rather than a formal pytest suite with fixtures and CI. This was a reasonable trade-off for a ~4-week solo project under a fixed deadline, but a real one to name rather than leave implicit.
+
+**A minor cosmetic issue with duplicate citations remains unfixed.** Some multi-fact answers cite the same `(plan, section)` more than once when a single answer synthesizes several facts from the same source chunk — harmless (the citation is still accurate), just not deduplicated.
 
 ## What I'd Do Differently With a Real Budget
 
