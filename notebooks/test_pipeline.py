@@ -35,6 +35,8 @@ for q in questions:
     total_input += pipeline_result.metrics.input_tokens
     total_output += pipeline_result.metrics.output_tokens
     total_cost += pipeline_result.metrics.estimated_cost_usd
+    is_direct = pipeline_result.metrics.input_tokens == 0
+    print(f"  direct_lookup={is_direct}")
 
 n = len(questions)
 print("=" * 100)
