@@ -205,6 +205,8 @@ The final run has **zero Incorrectly confident and zero Incorrectly hedged answe
 
 **A minor cosmetic issue with duplicate citations remains unfixed.** Some multi-fact answers cite the same `(plan, section)` more than once when a single answer synthesizes several facts from the same source chunk — harmless (the citation is still accurate), just not deduplicated.
 
+**Very short or abbreviated questions can fail retrieval even when the fuller, natural-language version works correctly.** Confirmed live during UI testing: "Cheapest ER Visit" (terse, abbreviated) retrieved only 1 of 8 relevant plans' cost chunks and produced an answer that falsely implied the other 7 plans had no ER cost data, while "Which plan has the cheapest emergency room visit?" (a full sentence, matching the corpus's own "emergency room" vocabulary rather than the abbreviation "ER") correctly retrieved all 8 and reasoned about the mismatched cost structures properly. Root cause: the source SBC documents never abbreviate "emergency room" to "ER," so BM25's literal keyword matching has nothing to match against, and a 3-word query gives embeddings comparatively little context to work with — the same underlying SBC-vocabulary-gap limitation already noted under Retrieval (Phase 3), now confirmed live on a question type central to this project's evaluation story. The failure mode is the safe kind — it hedges rather than asserting a wrong answer — so this is documented rather than fixed given the project timeline; phrasing questions as full sentences rather than terse keyword fragments gets reliably better results.
+
 ## What I'd Do Differently With a Real Budget
 
 *(TODO)*
