@@ -1,4 +1,3 @@
-# eval/run_retrieval_eval.py
 import json
 import sys
 sys.path.append("src")

@@ -1,4 +1,3 @@
-# src/extraction/extractor.py
 import re
 from .schema import AmountEntry
 

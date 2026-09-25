@@ -1,4 +1,3 @@
-# src/extraction/schema.py
 from pydantic import BaseModel, model_validator
 
 class AmountEntry(BaseModel):
