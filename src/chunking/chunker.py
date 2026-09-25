@@ -5,8 +5,8 @@ renders each document's rows/items into human-readable chunk text plus
 citation metadata, entirely at build time -- nothing gets written back
 into data/processed/.
 
-Chunking granularity, decided and validated in Phase 3 (see planning
-doc): row-level for the grid table and Important Questions table (chosen
+Chunking granularity, decided and validated in Phase 3: 
+row-level for the grid table and Important Questions table (chosen
 over category-level/table-level for retrieval precision, and confirmed
 via the fixed-size/semantic chunking comparison to be both exact -- a
 chunk IS a row, so "never split a row mid-chunk" holds by construction --

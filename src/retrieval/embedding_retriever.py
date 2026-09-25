@@ -1,4 +1,3 @@
-# src/retrieval/embedding_retriever.py
 import json
 import faiss
 import numpy as np

@@ -1,4 +1,3 @@
-# src/retrieval/base.py
 from dataclasses import dataclass
 
 @dataclass
